@@ -13,6 +13,14 @@ public class WatchInterpreterController {
 
     private final WatchInterpreter britishInterpreter = WatchInterpreterFactory.getWatchInterpreter("British");
 
+    /**
+     * interpret provides the user with the main functionality that
+     * transforms between the numeric time to the spoken form of the
+     * desired time
+     *
+     * @param time String of time in HH:mm format
+     * @return String of the spoken form of the time input or the error message
+     */
     @GetMapping("interpreter")
     public String interpret(@RequestParam("time") String time) {
 

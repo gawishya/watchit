@@ -13,6 +13,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import static org.mockito.MockitoAnnotations.openMocks;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 class WatchInterpreterControllerTest {
 
@@ -41,6 +42,31 @@ class WatchInterpreterControllerTest {
         final ResultActions result = mockMvc.perform(requestBuilder);
 
         //Then
-        result.andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.is("one o'clock"))).andDo(print());
+        result
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.is("one o'clock"))).andDo(print());
+    }
+
+    @Test
+    public void interpret_whenInValidTimePassed_returnValidationError() throws Exception {
+
+        //Given
+        final String time = "adf:00";
+
+        final MockHttpServletRequestBuilder requestBuilder =
+                get("/v1/watch/interpreter")
+                        .param("time", time)
+                        .contentType(MediaType.APPLICATION_JSON);
+        //When
+        final ResultActions result = mockMvc.perform(requestBuilder);
+
+        //Then
+        result
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers
+                                   .jsonPath("$",
+                                             Matchers.is(
+                                                     "Time does not match a valid pattern, Time must be in this format HH:mm !")))
+                .andDo(print());
     }
 }

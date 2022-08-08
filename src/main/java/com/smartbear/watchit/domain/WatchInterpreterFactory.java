@@ -9,6 +9,14 @@ public class WatchInterpreterFactory {
 
     }
 
+    /**
+     * getWatchInterpreter a factory method to provide the user with
+     * the correct Interpreter required.
+     *
+     * @param interpreter String of the required interpreter British/German/..
+     * @return One of the concrete classes Implementing WatchInterpreter according
+     * to user input.
+     */
     public static WatchInterpreter getWatchInterpreter(String interpreter) {
 
         if (interpreter.equals("British")) {

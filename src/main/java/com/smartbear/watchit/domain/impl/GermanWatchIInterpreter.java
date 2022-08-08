@@ -7,6 +7,6 @@ public class GermanWatchIInterpreter implements WatchInterpreter {
     @Override
     public String writeTimeInWords(String timeInNumbers) {
 
-        return null;
+        throw new UnsupportedOperationException();
     }
 }

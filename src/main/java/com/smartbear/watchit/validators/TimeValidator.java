@@ -7,9 +7,17 @@ import java.util.regex.Pattern;
 
 public class TimeValidator extends BaseValidator<String> {
 
-    // This regex matches hh:mm & h:mm & 24 hrs system
-    private final String HH_MM_OR_H_MM_REGEX = "^(?:(?:[01][0-9]|[0-9])|2[0-3])[-:h][0-5][0-9]$";
+    // This regex matches HH:mm & H:mm in 24 hrs system
+    private static final String HH_MM_OR_H_MM_REGEX = "^(?:(?:[01][0-9]|[0-9])|2[0-3])[-:h][0-5][0-9]$";
 
+    /**
+     * validate checks for time format validation on the provided input.
+     * Input must comply to the required format which is HH:mm to be valid
+     *
+     * @param time provided time string to validatee
+     * @return true if valid only
+     * @throws TimeNotValidException with explanation of the required format
+     */
     @Override
     protected boolean validate(String time) throws TimeNotValidException {
 

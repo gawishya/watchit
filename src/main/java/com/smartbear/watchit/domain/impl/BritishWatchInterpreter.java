@@ -46,7 +46,7 @@ public class BritishWatchInterpreter implements WatchInterpreter {
 
         final String minsInWords = converter.convert(mins);
         final String nextHourInWords = converter.convert(hrs == 12 ? 1 : hrs + 1);
-        final int hoursAfterFix = hrs == 0? 12 : hrs;
+        final int hoursAfterFix = hrs == 0 ? 12 : hrs;
         final String hoursAfterFixInWords = converter.convert(hoursAfterFix);
         if (mins == 15) {
             return "quarter past ".concat(hoursAfterFixInWords);
