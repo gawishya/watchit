@@ -39,7 +39,7 @@ Finally, start running the docker container from the prepared docker image
 To start using the application, open browser window & type `localhost:8080` this will open the application home page where you can start using the application functionality.
 
 
-##FAQ:
+## FAQ:
 
 **How to change the required port?**
 
